@@ -1,0 +1,31 @@
+pagina_inicial:
+    path: /
+    controller: App\Controller\HomeController::index
+
+login:
+    path: /login
+    controller: App\Controller\AuthController::login
+
+mostra_action:
+    path: /usuario/mostra
+    controller: App\Controller\NewUserController::mostraAction
+
+criar_usuario_formulario:
+    path: /usuario/novo
+    controller: App\Controller\NewUserController::formulario
+
+lista_usuario:
+    path: /usuario/lista
+    controller: App\Controller\NewUserController::lista
+
+mostra_usuario:
+    path: /usuario/mostra/{id}
+    controller: App\Controller\NewUserController::mostra
+
+edita_usuario:
+    path: /usuario/edita/{id}
+    controller: App\Controller\NewUserController::edita
+
+deleta_usuario:
+    path: /usuario/remove/{id}
+    controller: App\Controller\NewUserController::delete
