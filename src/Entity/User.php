@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @method string getUserIdentifier()
  */
 class User implements UserInterface
 {
@@ -44,6 +43,11 @@ class User implements UserInterface
      */
     private $endereco;
 
+    /**
+     * @ORM\Column (type="string", length=500
+     */
+    private $perfil;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,18 +73,6 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getSenha(): ?string
-    {
-        return $this->senha;
-    }
-
-    public function setSenha(string $senha): self
-    {
-        $this->senha = $senha;
 
         return $this;
     }
@@ -111,12 +103,12 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return [$this->perfil ?? "ANONYMUS"] ;
     }
 
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->senha;
     }
 
     public function getSalt()
@@ -126,16 +118,16 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->senha = null;
     }
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        $this->email;
     }
 
-    public function __call($name, $arguments)
+    public function getUserIdentifier()
     {
-        // TODO: Implement @method string getUserIdentifier()
+        return $this->email;
     }
 }

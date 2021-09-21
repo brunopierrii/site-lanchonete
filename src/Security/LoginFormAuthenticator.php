@@ -96,7 +96,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($request->request->get('senha', '')),
             [
                 new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),
             ]
@@ -111,7 +111,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('admim_home'));
+        return new RedirectResponse($this->urlGenerator->generate('home_user'));
     }
 
     protected function getLoginUrl(Request $request): string
