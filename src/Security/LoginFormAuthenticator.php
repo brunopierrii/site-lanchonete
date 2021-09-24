@@ -64,6 +64,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         );
 
         return $credentials;
+
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider): ?User
@@ -72,6 +73,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if (!$this->csrfTokenManager->isTokenValid($token)){
             throw new InvalidCsrfTokenException();
         }
+
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
@@ -93,6 +95,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         $email = $request->request->get('email', '');
 
         $request->getSession()->set(Security::LAST_USERNAME, $email);
+
 
         return new Passport(
             new UserBadge($email),

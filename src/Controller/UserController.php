@@ -9,10 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/home",name="home_user")
+     * @Route("/admin",name="home_user")
      */
-    //#[Route('/user', name: 'user')]
-    public function index(): Response
+    public function admin(): Response
     {
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
@@ -20,10 +19,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/admin",name="home_user111")
+     * @Route("/profile",name="home_usuario")
      */
-    //#[Route('/user', name: 'user')]
-    public function indexx(): Response
+    public function user(): Response
     {
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',

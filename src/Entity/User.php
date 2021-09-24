@@ -19,7 +19,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $nome;
 
@@ -44,7 +44,7 @@ class User implements UserInterface
     private $endereco;
 
     /**
-     * @ORM\Column (type="string", length=500
+     * @ORM\Column (type="string", length=500)
      */
     private $perfil;
 
@@ -101,14 +101,38 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPerfil()
+    {
+        return $this->perfil;
+    }
+
+    /**
+     * @param mixed $perfil
+     */
+    public function setPerfil($perfil): void
+    {
+        $this->perfil = $perfil;
+    }
+
     public function getRoles()
     {
-        return [$this->perfil ?? "ANONYMUS"] ;
+        return [$this->perfil ?? "ROLE_USER"];
     }
+
 
     public function getPassword()
     {
         return $this->senha;
+    }
+
+    public function setPassword(string $senha)
+    {
+        return $this->senha = $senha;
+
+        return $this;
     }
 
     public function getSalt()
@@ -118,7 +142,6 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        $this->senha = null;
     }
 
     public function getUsername()

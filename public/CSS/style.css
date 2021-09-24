@@ -33,7 +33,7 @@
     }
     
     .container-login {
-        background-image: url(//localhost:8000/pastel-back.png);
+        background-image: url(//localhost:8000/images/pastel-back.png);
         width: 100%;
         min-height: 100vh;
         display: -webkit-box;
@@ -68,7 +68,7 @@
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        background-image: url(//localhost:8000/pastel.jpg);
+        background-image: url(//localhost:8000/images/pastel.jpg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;

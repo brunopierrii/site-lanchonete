@@ -29,3 +29,12 @@ edita_usuario:
 deleta_usuario:
     path: /usuario/remove/{id}
     controller: App\Controller\NewUserController::delete
+
+home_user:
+    path: /admin
+    controller: App\Controller\UserController::admin
+
+home_usuario:
+    path: /profile
+    controller: App\Controller\UserController::user
+

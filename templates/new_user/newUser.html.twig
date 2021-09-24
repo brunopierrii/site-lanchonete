@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="//localhost:8000/images/pastel.ico" type="image/x-con">
+    <title>{% block title %}Pastel da Penha{% endblock %}</title>
+</head>
+{% block body %}
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #FAEBD7;
+        direction: ltr;
+        font-size: 14px;
+        line-height: 1.4286;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container img {
+        max-width: 200px;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+    }
+    .displayed {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border-top: 2px solid #8B0000;
+        border-left: 2px solid #8B0000;
+        border-right: 2px solid #8B0000;
+        border-bottom: 2px solid #8B0000;
+    }
+
+    .corpo {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+        width: 1000px;
+        background-color: #fff;
+        margin: 0 auto;
+        border-top: 2px solid #8B0000;
+        border-left: 2px solid #8B0000;
+        border-right: 2px solid #8B0000;
+        border-bottom: 2px solid #8B0000;
+    }
+
+    .topo {
+        padding: 20px 25px;
+        border-bottom: 5px solid #8B0000;
+    }
+
+    .topo a {
+        color: #FF4500;
+        text-decoration: none;
+        font: 20px Arial;
+    }
+
+    .topo a:hover {
+        text-decoration: underline dashed;
+    }
+
+    .container-form{
+        /*width: auto;*/
+        /*display: flex;*/
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        border: 1px solid #8B0000;
+        display: block;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        margin: 25px auto;
+        min-height: 0;
+        -webkit-transition: .2s;
+        transition: .2s;
+        width: 450px;
+
+    }
+
+    .form-user{
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex-grow: 1;
+        flex-grow: 1;
+        overflow: hidden;
+        padding: 24px 24px 36px;
+        background: #8B0000;
+        background: -webkit-linear-gradient(top, #8B0000, #FFA500);
+        background: -o-linear-gradient(top, #8B0000, #FFA500);
+        background: -moz-linear-gradient(top, #8B0000, #FFA500);
+        background: linear-gradient(top, #8B0000, #FFA500);
+    }
+
+    .box-form{
+        display: inline-block;
+        font-size: 14px;
+        padding: 24px 0 0;
+        vertical-align: top;
+        white-space: normal;
+        width: 100%;
+
+    }
+
+    h1{
+        font-family: 'Arial', serif;
+        color: #FFA500;
+    }
+
+    .box-form1{
+        border: 0 solid transparent;
+        border-width: 0 24px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    form {
+        display: block;
+        margin-top: 0;
+    }
+
+    .section-form{
+        margin: 16px 0;
+        outline: none;
+    }
+    section {
+        display: block;
+    }
+
+    .forms{
+        padding-left: 40px;
+        padding-right: 40px;
+        margin: 10px -40px 16px;
+        color: whitesmoke;
+        width: 60%;
+        position: relative;
+        margin-bottom: 20px;
+        padding-top: 10px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .forms1{
+        border: none;
+        font-family: 'Arial', serif;
+        font-size: 16px;
+        color: whitesmoke;
+        line-height: 1.2;
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: transparent;
+        text-align: center;
+        border: 0;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .forms-select{
+        border: none;
+        padding-left: 40px;
+        padding-right: 40px;
+        color: whitesmoke;
+        width: 60%;
+        position: relative;
+        padding-top: 10px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        margin: 10px auto 20px;
+    }
+
+    .forms2{
+        border: none;
+        font-family: 'Arial', serif;
+        font-size: 16px;
+        color: whitesmoke;
+        line-height: 1.2;
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: transparent;
+        text-align: center;
+        border: 0;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .forms2:after{
+        border: none;
+        font-family: 'Arial', serif;
+        font-size: 16px;
+        color: #8B0000;
+        line-height: 1.2;
+        display: block;
+        width: 100%;
+        height: 40px;
+        background: transparent;
+        text-align: center;
+        border: 0;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-btn {
+        width: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .login-form-btn {
+        font-family: 'Arial';
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffbb00;
+        line-height: 1.2;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 20px;
+        min-width: 120px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: whitesmoke;
+        border: 0;
+        box-shadow: 0 9px #999;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .login-form-btn:hover {
+        background-color: #8B0000;
+    }
+
+    .login-form-btn:active {
+        background-color: #8B0000;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+</style>
+
+
+<div class="container">
+    <img class="displayed" src="//localhost:8000/images/pastel.jpg" width="320" height="320" alt="iconepastel">
+</div>
+
+<div class="corpo">
+    <div class="topo">
+        <head>
+            <nav>
+                <a href="http://localhost:8000/">Home</a> |
+                <a href="http://localhost:8000/login">Admin</a>
+            </nav>
+        </head>
+    </div>
+    <div class="container-form">
+        <div class="form-user">
+            <h1>Cadastre-se</h1>
+            <div class="box-form">
+                <div class="box-form1">
+                    <form method="POST" action="">
+                        <span>
+                            <section class="section-form">
+                                <div class="forms">
+                                    <input class="forms1" type="text" name="nome" placeholder="Nome Completo">
+                                </div>
+
+                                <div class="forms">
+                                    <input class="forms1" type="password" name="password" placeholder="Senha">
+                                </div>
+
+                                <div class="forms">
+                                    <input class="forms1" type="email" name="email" placeholder="E-mail">
+                                </div>
+
+                                <div class="forms">
+                                    <input class="forms1" type="text" name="telefone" placeholder="Telefone">
+                                </div>
+
+                                <div class="forms">
+                                    <input class="forms1" type="text" name="endereco" placeholder="Endereço">
+                                </div>
+
+                                <div class="forms-select">
+                                    <label>Selecionar Perfil:</label>
+                                    <select class="forms2" name="perfil">
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Usuario">Usuário</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-btn">
+                                    <a href="{{ path('home_user') }}"><button class="login-form-btn" type="submit">Cadastrar</button></a>
+                                </div>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                            </section>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

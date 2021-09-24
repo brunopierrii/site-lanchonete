@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,17 +20,28 @@ class NewUserController extends AbstractController
     }
 
     /**
-     * @Route("/usuario/novo",methods="GET")
+     * @Route("/usuario/novo",methods="POST",name="user_new")
      */
     public function formulario()
     {
         $form = $this->createFormBuilder(new User())
+            ->add('nome')
             ->add('email')
-            ->add('senha')
+            ->add('password')
+            ->add('telefone')
+            ->add('endereco')
+            ->add('perfil', ChoiceType::class,[
+                "multiple" => true,
+                "choices" => [
+                    "Administrador" => "ROLE_ADMIN", "Usuario" => "ROLE_USER"
+                ]
+            ])
             ->setAction('/usuario/novo')
             ->getForm();
 
-        return $this->render("new_user/index.html.twig",["form" => $form->createView()]);
+        return $this->render("new_user/newUser.html.twig",[
+            "form" => $form->createView()
+        ]);
     }
 
     /**
@@ -42,10 +54,18 @@ class NewUserController extends AbstractController
         $form = $this->createFormBuilder($user)
             ->add('nome')
             ->add('email')
-            ->add('senha')
+            ->add('password')
             ->add('telefone')
             ->add('endereco')
+            ->add('perfil', ChoiceType::class,[
+                "multiple" => true,
+                "choices" => [
+                    "Administrador" => "ROLE_ADMIN", "Usuario" => "ROLE_USER"
+                ]
+            ])
+            ->setAction('/usuario/novo')
             ->getForm();
+
 
         $form->handleRequest($request);
 
@@ -63,7 +83,7 @@ class NewUserController extends AbstractController
     {
         $repository = $this->getDoctrine()->getManager()->getRepository(User::class);
 
-        return $this->render("new_user/index.html.twig".["user" => $repository->findAll()]);
+        return $this->render("new_user/index.html.twig".['user' => $repository->findAll()]);
     }
 
     /**
@@ -74,7 +94,7 @@ class NewUserController extends AbstractController
         $form = $this->createFormBuilder($user)
             ->add('nome')
             ->add('email')
-            ->add('senha')
+            ->add('password')
             ->add('telefone')
             ->add('endereco')
             ->setAction("/usuario/edita".$user->getId())
