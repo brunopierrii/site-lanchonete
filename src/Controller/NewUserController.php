@@ -75,16 +75,14 @@ class NewUserController extends AbstractController
             $user->setTelefone($telefone);
             $user->setEndereco($endereco);
 
-            if(empty($perfil)){
-               $user->setPerfil('ROLE_USER');
-            }else{
-                if ($roleAdmin == true){
-                    $user->setPerfil('ROLE_ADMIN');
-                }
-                if ($roleUser == true){
-                    $user->setPerfil('ROLE_USER');
-                }
+
+            if ($roleAdmin == true) {
+                $user->setPerfil('ROLE_ADMIN');
             }
+            if ($roleUser == true) {
+                $user->setPerfil('ROLE_USER');
+            }
+
             $em->persist($user);
             $em->flush();
         }catch (UniqueConstraintViolationException $exception){

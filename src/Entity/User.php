@@ -106,7 +106,11 @@ class User implements UserInterface
      */
     public function getPerfil()
     {
-        return $this->perfil;
+        $perfil = $this->perfil ? [$this->perfil] : [];
+
+        $perfil[] = 'ROLE_USER';
+
+        return $perfil;
     }
 
     /**
